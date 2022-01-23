@@ -49,7 +49,7 @@
         /// </summary>
         /// <param name="id">The <see cref="string"/></param>
         /// <returns>The <seealso cref="Task{ActionResult{T}}"/></returns>
-        [HttpGet("{id:length(24)}", Name = "GetProduct")]
+        [HttpGet("{id}", Name = "GetProduct")]
         [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<ActionResult<Product>> GetProductById(string id)
@@ -99,7 +99,7 @@
             return Ok(await _repository.UpdateProduct(product));
         }
 
-        [HttpDelete("{id: length(24)}", Name = "DeleteProduct")]
+        [HttpDelete("{id}", Name = "DeleteProduct")]
         [ProducesResponseType(typeof(IEnumerable<Product>),(int)HttpStatusCode.OK)]
         public async Task<IActionResult> DeleteProductById(string id)
         {
