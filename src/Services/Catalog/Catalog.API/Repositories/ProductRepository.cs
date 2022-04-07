@@ -82,6 +82,7 @@
         public async Task<IEnumerable<Product>> GetProductByName(string name)
         {
             // Creating Filter 
+            //Eq like operation = ElemMatch not it
             FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Name, name);
 
             return await _context.Products.Find(filter).ToListAsync();
