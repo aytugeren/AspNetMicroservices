@@ -1,0 +1,59 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<header id="header">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="/" class="standard-logo" data-dark-logo="/Assets/images/logo-diamond.png"><img src="/Assets/images/logo-diamond.png" alt="Eren Kuyumculuk"></a>
+							<a href="/" class="retina-logo" data-dark-logo="/Assets/images/logo-diamond@x2.png"><img src="/Assets/images/logo-diamond@x2.png" alt="Eren Kuyumculuk"></a>
+						</div><!-- #logo end -->
+
+						<div class="header-misc">
+
+							<!-- Top Search
+							============================================= -->
+							<div id="top-search" class="header-misc-icon">
+								<a href="#" id="top-search-trigger"><i class="icon-line-search"></i><i class="icon-line-cross"></i></a>
+							</div><!-- #top-search end -->
+
+							<!-- Top Cart
+							============================================= -->
+							<div id="top-cart" class="header-misc-icon d-none d-sm-block">
+								<a href="#" id="top-cart-trigger"><i class="icon-line-bag"></i><span class="top-cart-number">0</span></a>
+								<div class="top-cart-content">
+									<div class="top-cart-title">
+										<h4>Sepet</h4>
+									</div>
+									<div class="top-cart-items">
+									</div>
+									<div class="top-cart-action">
+										<span class="top-checkout-price">0 TL</span>
+										<a href="#" class="button button-3d button-small m-0">Sepeti Görüntüle</a>
+									</div>
+								</div>
+							</div><!-- #top-cart end -->
+
+						</div>
+
+						<div id="primary-menu-trigger">
+							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+						</div>
+
+						@await Html.PartialAsync("~/Views/Catalog/GetHomeBarCatalog.cshtml")
+
+
+						<form class="top-search-form" action="search.html" method="get">
+							<input type="text" name="q" class="form-control" value="" placeholder="Size nasıl yardımcı olabiliriz?" autocomplete="off">
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header><!-- #header end -->
