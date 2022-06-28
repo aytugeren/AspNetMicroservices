@@ -20,12 +20,19 @@
             var database = client.GetDatabase(configuration.GetValue<string>("DatabaseSettings:DatabaseName"));
 
             Products = database.GetCollection<Product>(configuration.GetValue<string>("DatabaseSettings:CollectionName"));
-            CatalogContextSeed.SeedData(Products);
+            Catalogs = database.GetCollection<Catalog>(configuration.GetValue<string>("DatabaseSettings:CollectionNameCatalog"));
+            ContentCatalogs = database.GetCollection<ContentCatalog>(configuration.GetValue<string>("DatabaseSettings:CollectionNameContentCatalog"));
+            CatalogContextSeed.SeedData(Products, Catalogs, ContentCatalogs);
         }
 
         /// <summary>
         /// The Collection of MongoDb ProductDb
         /// </summary>
         public IMongoCollection<Product> Products { get; }
+        
+        public IMongoCollection<ContentCatalog> ContentCatalogs { get; }
+
+        public IMongoCollection<Catalog> Catalogs { get; }
+
     }
 }

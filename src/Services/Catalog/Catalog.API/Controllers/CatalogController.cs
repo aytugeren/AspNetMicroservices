@@ -16,6 +16,7 @@
     {
         #region Injection Private
         private readonly IProductRepository _repository;
+        private readonly ICatalogRepository _catalogRepository;
         private readonly ILogger<CatalogController> _logger;
         #endregion
 
@@ -24,8 +25,10 @@
         /// </summary>
         /// <param name="repository"></param>
         /// <param name="logger"></param>
-        public CatalogController(IProductRepository repository, ILogger<CatalogController> logger)
+        /// <param name="catalogRepository"></param>
+        public CatalogController(IProductRepository repository, ICatalogRepository catalogRepository, ILogger<CatalogController> logger)
         {
+            _catalogRepository = catalogRepository;
             _repository = repository;
             _logger = logger;
         }
@@ -104,6 +107,43 @@
         public async Task<IActionResult> DeleteProductById(string id)
         {
             return Ok(await _repository.DeleteProduct(id));
+        }
+
+        /// <summary>
+        /// The GetProductyCategory
+        /// </summary>
+        /// <returns>The <seealso cref="Task{ActionResult{T}}"/></returns>
+        [Route("[action]", Name = "GetCatalogs")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<Catalog>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Catalog>>> GetCatalogsFromMongo()
+        {
+            var catalogs = await _catalogRepository.GetCatalogs();
+            return Ok(catalogs);
+        }
+
+        [Route("[action]", Name = "GetContentCatalogs")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<ContentCatalog>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<ContentCatalog>>> GetContentCatalog()
+        {
+            var contentCatalogs = await _catalogRepository.GetContentCatalogs();
+            return Ok(contentCatalogs);
+        }
+
+        /// <summary>
+        /// The GetProductyCategory
+        /// </summary>
+        /// <param name="placeEnum">The <see cref="string"/></param>
+        /// <returns>The <seealso cref="Task{ActionResult{T}}"/></returns>
+        [Route("[action]/{placeEnum}", Name = "GetContentCatalogByPlace")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<ContentCatalog>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<ContentCatalog>>> GetContentCatalogByPlace(string placeEnum)
+        {
+            var contentCatalogs = await _catalogRepository.GetContentCatalogByPlace(placeEnum);
+
+            return Ok(contentCatalogs);
         }
         #endregion
     }

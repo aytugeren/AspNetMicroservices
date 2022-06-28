@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shopping.Web.Models;
+using Shopping.Web.Services.Catalog;
 using System.Diagnostics;
 
 namespace Shopping.Web.Controllers
@@ -7,10 +8,12 @@ namespace Shopping.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICatalogService _catalogService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICatalogService catalogService)
         {
             _logger = logger;
+            _catalogService = catalogService;
         }
 
         public IActionResult Index()
@@ -38,7 +41,13 @@ namespace Shopping.Web.Controllers
             return PartialView();
         }
 
-        public PartialViewResult GetSlider()
+        public async Task<PartialViewResult> GetSlider()
+        {
+            var sliders = await _catalogService.GetContentCatalogsByPlaceEnum("Header");
+            return PartialView(sliders);
+        }
+
+        public PartialViewResult GetFooter()
         {
             return PartialView();
         }

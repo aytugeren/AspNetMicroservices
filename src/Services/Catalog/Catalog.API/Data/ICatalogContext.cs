@@ -11,5 +11,9 @@
     public interface ICatalogContext
     {
         IMongoCollection<Product> Products { get; }
+
+        IMongoCollection<Catalog> Catalogs { get; }
+
+        IMongoCollection<ContentCatalog> ContentCatalogs { get; }
     }
 }

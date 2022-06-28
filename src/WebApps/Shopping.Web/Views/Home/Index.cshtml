@@ -1,5 +1,6 @@
-﻿@{
+﻿@using Shopping.Web.Extensions
+@{
     ViewData["Title"] = "Home Page";
 }
-@await Html.PartialAsync("~/Views/Home/GetSlider.cshtml")
-@await Html.PartialAsync("~/Views/Catalog/GetHomeContent.cshtml")
+@await Html.RenderAction("GetSlider","Home")
+@await Html.RenderAction("GetHomeContent","Catalog")

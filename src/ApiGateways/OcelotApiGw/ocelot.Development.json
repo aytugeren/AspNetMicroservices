@@ -23,7 +23,7 @@
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Catalog/{id}",
+      "UpstreamPathTemplate": "/Catalog/CatalogById/{id}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
@@ -36,6 +36,42 @@
         }
       ],
       "UpstreamPathTemplate": "/Catalog/GetProductByCategory/{category}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Catalog/GetCatalogsFromMongo",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog.api",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Catalog/GetCatalogs",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Catalog/GetContentCatalog",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog.api",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Catalog/GetContentCatalogs",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Catalog/GetContentCatalogByPlace/{placeEnum}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog.api",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Catalog/GetContentCatalogs/{placeEnum}",
       "UpstreamHttpMethod": [ "GET" ]
     },
     //Basket API

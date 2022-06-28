@@ -108,7 +108,6 @@
 
             return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
         }
-
         #endregion
     }
 }
