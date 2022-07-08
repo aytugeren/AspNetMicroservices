@@ -6,7 +6,7 @@
 
         public string? CatalogName { get; set; }
 
-        public int CatalogIndex { get; set; }
+        public string? CatalogIndex { get; set; }
 
         public string? CatalogSeoName { get; set; }
 

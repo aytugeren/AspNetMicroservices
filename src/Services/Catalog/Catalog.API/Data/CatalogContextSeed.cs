@@ -13,7 +13,7 @@
     /// </summary>
     public class CatalogContextSeed
     {
-        public static void SeedData(IMongoCollection<Product> productCollection, IMongoCollection<Catalog> catalogCollection, IMongoCollection<ContentCatalog> contentCatalogCollection)
+        public static void SeedData(IMongoCollection<Product> productCollection, IMongoCollection<Catalog> catalogCollection, IMongoCollection<ContentCatalog> contentCatalogCollection, IMongoCollection<CatalogProductMapping> catalogProductMapping)
         {
             bool existProduct = productCollection.Find(s => true).Any();
             if (!existProduct)
@@ -32,6 +32,12 @@
             {
                 contentCatalogCollection.InsertManyAsync(GetPreconfiguredContentCatalog());
             }
+
+            bool existCatalogProductMapping = catalogProductMapping.Find(s => true).Any();
+            if (!existCatalogProductMapping)
+            {
+                catalogProductMapping.InsertManyAsync(GetPreconfiguredCatalogProductMapping());
+            }
         }
 
         private static IEnumerable<Product> GetPreconfiguredProducts()
@@ -41,63 +47,87 @@
                 new Product()
                 {
                     Id = "602d2149e773f2a3990b47f5",
-                    Name = "IPhone X",
-                    Summary = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
+                    Name = "Kırmızı Taşlı 14 Ayar Altın Kolye",
+                    Summary = "14 Ayar Altin Kolye ",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
-                    ImageFile = "product-1.png",
-                    Price = 950.00M,
-                    Category = "Smart Phone"
+                    ProductSeoName = "kirmizi-tasli-altin-kolye",
+                    ProductVariantIndex = 1,
+                    Price = 1200.00M,
+                    CampaignPrice = 100.00M,
+                    DiscountedPrice = 1100.00M,
+                    CampaignType = CampaignTypeEnum.Total.ToString(),
+                    ProductImage = "v1656871077/Products/Neackle/Necklet-1_tsc07c.png"
                 },
                 new Product()
                 {
                     Id = "602d2149e773f2a3990b47f6",
-                    Name = "Samsung 10",
-                    Summary = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
+                    Name = "Yıldız Motifli Doğal Taş Beyaz Altın Kolye",
+                    Summary = "14 Ayar Altin Kolye ",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
-                    ImageFile = "product-2.png",
-                    Price = 840.00M,
-                    Category = "Smart Phone"
+                    ProductSeoName = "yildiz-motifli-altin-kolye",
+                    ProductVariantIndex = 2,
+                    Price = 900.00M,
+                    CampaignPrice = 50.00M,
+                    DiscountedPrice = 850.00M,
+                    CampaignType = CampaignTypeEnum.Total.ToString(),
+                    ProductImage = "v1656871707/Products/Neackle/Necklet-2_r8al5n.png"
                 },
                 new Product()
                 {
                     Id = "602d2149e773f2a3990b47f7",
-                    Name = "Huawei Plus",
-                    Summary = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
+                    Name = "Altın Sarısı İsimli Kelepçe",
+                    Summary = "14 Ayar Altin Bileklik ",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
-                    ImageFile = "product-3.png",
-                    Price = 650.00M,
-                    Category = "White Appliances"
+                    ProductSeoName = "altin-sarisi-isimli-bileklik",
+                    ProductVariantIndex = 3,
+                    Price = 450.00M,
+                    CampaignPrice = null,
+                    DiscountedPrice = null,
+                    CampaignType = null,
+                    ProductImage = "v1656871759/Products/Bracalet/Bracalet-6_ez39y6.png"
                 },
                 new Product()
                 {
                     Id = "602d2149e773f2a3990b47f8",
-                    Name = "Xiaomi Mi 9",
-                    Summary = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
+                    Name = "Sonsuzluk Motifli İsimli Altın Bileklik",
+                    Summary = "14 Ayar Altin Bileklik ",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
-                    ImageFile = "product-4.png",
-                    Price = 470.00M,
-                    Category = "White Appliances"
+                    ProductSeoName = "sonsuzluk-motifli-isimli-altin-bileklik",
+                    ProductVariantIndex = 4,
+                    Price = 560.00M,
+                    CampaignPrice = null,
+                    DiscountedPrice = null,
+                    CampaignType = null,
+                    ProductImage = "v1656871761/Products/Bracalet/Bracalet-5_nuhjkb.png"
                 },
                 new Product()
                 {
                     Id = "602d2149e773f2a3990b47f9",
-                    Name = "HTC U11+ Plus",
-                    Summary = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
+                    Name = "Sıralı Doğal Taşlı Altın Yüzük",
+                    Summary = "14 Ayar Altin Yüzük ",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
-                    ImageFile = "product-5.png",
-                    Price = 380.00M,
-                    Category = "Smart Phone"
+                    ProductSeoName = "sirali-dogal-tasli-altin-yuzuk",
+                    ProductVariantIndex = 5,
+                    Price = 670.00M,
+                    CampaignPrice = 20.00M,
+                    DiscountedPrice = 536.00M,
+                    CampaignType = CampaignTypeEnum.Percentage.ToString(),
+                    ProductImage = "v1656871740/Products/Ring/Ring-4_glnfc0.png"
                 },
                 new Product()
                 {
                     Id = "602d2149e773f2a3990b47fa",
-                    Name = "LG G7 ThinQ",
-                    Summary = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
+                    Name = "Narin Tek ve Doğal Taşlı Altın Yüzük",
+                    Summary = "14 Ayar Altin Yüzük ",
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
-                    ImageFile = "product-6.png",
-                    Price = 240.00M,
-                    Category = "Home Kitchen"
-                }
+                    ProductSeoName = "narin-tek-ve-dogal-tasli-altin-yuzuk",
+                    ProductVariantIndex = 6,
+                    Price = 670.00M,
+                    CampaignPrice = 20.00M,
+                    DiscountedPrice = 536.00M,
+                    CampaignType = CampaignTypeEnum.Percentage.ToString(),
+                    ProductImage = "v1656871741/Products/Ring/Ring-3_vwtpne.png"                
+                },
             };
         }
 
@@ -160,7 +190,7 @@
                 new ContentCatalog
                 {
                     Id = "602d2149e773f2a3990b38f5",
-                    ContentImage = "v1656078532/bannerTaki_rqbrhz.jpg",
+                    ContentImage = "v1656505745/GoldHomePageSliderDone_mloiyl.jpg",
                     BackgroundColor = "#F6F6F6",
                     BackgroundImage = string.Empty,
                     ContentTitleStyleHtml = "color: #333; max-width: 430px; line-height: 1.15;",
@@ -223,6 +253,26 @@
             };
 
             return a;
+        }
+
+        private static IEnumerable<CatalogProductMapping> GetPreconfiguredCatalogProductMapping()
+        {
+            return new List<CatalogProductMapping>() {
+                new CatalogProductMapping()
+                {
+                    CatalogId = "602d2149e773f2a3990b47f5",
+                    Products = new List<string>() { "602d2149e773f2a3990b47f5", "602d2149e773f2a3990b47f6", "602d2149e773f2a3990b47f7" },
+                    IsActive = true,
+                    IsDeleted = false
+                },
+                new CatalogProductMapping()
+                {
+                    CatalogId = "602d2149e773f2a3990b4345",
+                    Products = new List<string> { "602d2149e773f2a3990b47f8", "602d2149e773f2a3990b47f9", "602d2149e773f2a3990b47fa" },
+                    IsActive = true,
+                    IsDeleted = false
+                }
+            };
         }
     }
 }

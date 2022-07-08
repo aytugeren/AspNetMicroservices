@@ -1,18 +1,8 @@
-﻿namespace Catalog.API.Entities
+﻿namespace Shopping.Web.Models
 {
-    #region
-    using MongoDB.Bson.Serialization.Attributes;
-    #endregion
-
-    public class Product
+    public class ProductModel
     {
-        #region Public Properties
-        /// <summary>
-        /// Gets or sets Id
-        /// </summary>
-        [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public string? Id { get; set; }
+        public string Id { get; set; }
 
         public string? Name { get; set; }
 
@@ -33,7 +23,5 @@
         public decimal? CampaignPrice { get; set; }
 
         public string? CampaignType { get; set; }
-
-        #endregion
     }
 }

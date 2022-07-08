@@ -61,20 +61,6 @@
         }
 
         /// <summary>
-        /// The Get Product By Category
-        /// </summary>
-        /// <param name="categoryName">The <see cref="string"/></param>
-        /// <returns>The <seealso cref="Task{IEnumerable{T}}"/></returns>
-        public async Task<IEnumerable<Product>> GetProductByCategory(string categoryName)
-        {
-            // Creating Filter 
-            FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Category, categoryName);
-
-            return await _context.Products.Find(filter).ToListAsync();
-
-        }
-
-        /// <summary>
         /// The Get Product By Name
         /// </summary>
         /// <param name="name">The <see cref="string"/></param>

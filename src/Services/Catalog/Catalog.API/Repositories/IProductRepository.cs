@@ -31,13 +31,6 @@
         Task<IEnumerable<Product>> GetProductByName(string name);
 
         /// <summary>
-        /// The Get Product By Category Name
-        /// </summary>
-        /// <param name="categoryName">The <see cref="string"/>.</param>
-        /// <returns>The <seealso cref="Task{IEnumerable{T}}"/>.</returns>
-        Task<IEnumerable<Product>> GetProductByCategory(string categoryName);
-
-        /// <summary>
         /// The Create Product
         /// </summary>
         /// <param name="product">The <see cref="Model"/></param>

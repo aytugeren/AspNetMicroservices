@@ -13,9 +13,36 @@ namespace Shopping.Web.Controllers
             _catalogService = catalogService;
         }
 
-        public IActionResult Index()
+        /// <summary>
+        /// Catalog Index Page - Summary
+        /// </summary>
+        /// <param name="seoName">can be improved</param>
+        /// <returns></returns>
+        [Route("/{seoName}")]
+        public async Task<IActionResult> Index(string seoName)
         {
-            return View();
+            var model = new IndexModel();
+            //// Seoname e gore catalog var mi yok mu kontrol ediyoruz.
+            var catalog = await _catalogService.GetCatalogBySeoName(seoName);
+            if (catalog == null || catalog.Id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            //// Alinan kategoriye gore Urunleri getirtiyoruz.
+            var products = await _catalogService.GetProductIdsByCatalogId(catalog.Id);
+            if (products == null)
+            {
+                return RedirectToAction("Index","Home");
+            }
+            
+            //// Kategori Filtreleri Cekiliyor.
+            var filters = await _catalogService.GetCatalogFiltersByChosenCatalog(catalog);
+
+
+            model.Products = products;
+            model.Filters = filters;
+            return View(model);
         }
 
         public async Task<PartialViewResult> GetHomeBarCatalog()
@@ -32,6 +59,16 @@ namespace Shopping.Web.Controllers
         }
 
         public PartialViewResult GetHomePageSellersBar()
+        {
+            return PartialView();
+        }
+
+        public async Task<PartialViewResult> GetFiltersByCategoryId(Dictionary<string, List<PlacedCatalogModel>> filterModel)
+        {
+            return PartialView(filterModel);
+        }
+
+        public async Task<PartialViewResult> GetProducts(string catalogId)
         {
             return PartialView();
         }

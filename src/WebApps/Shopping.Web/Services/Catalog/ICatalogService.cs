@@ -9,5 +9,11 @@ namespace Shopping.Web.Services.Catalog
 
         Task<IEnumerable<ContentCatalogModel>> GetContentCatalogsByPlaceEnum(string placeEnum);
 
+        Task<PlacedCatalogModel> GetCatalogBySeoName(string seoName);
+
+        Task<IEnumerable<ProductModel>> GetProductIdsByCatalogId(string catalogId);
+
+        Task<Dictionary<string, List<PlacedCatalogModel>>> GetCatalogFiltersByChosenCatalog(PlacedCatalogModel catalogModel);
+
     }
 }

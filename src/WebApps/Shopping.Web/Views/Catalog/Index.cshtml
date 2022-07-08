@@ -1,0 +1,47 @@
+﻿@using Shopping.Web.Extensions
+@model IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CatalogLayout.cshtml";
+}
+
+<div class="postcontent col-lg-9">
+
+    <div id="shop" class="shop row grid-container gutter-20" data-layout="fitRows">
+
+        @foreach (var item in Model.Products)
+        {
+            <div class="product col-md-4 col-sm-6 col-12">
+                <div class="grid-inner">
+                    <div class="product-image">
+                        <a href="@item.ProductSeoName-@item.ProductVariantIndex"><img src="@StaticPaths.StaticPathOfImages@item.ProductImage" alt="Checked Short Dress"></a>
+                        <div class="bg-overlay">
+                            <div class="bg-overlay-content align-items-end justify-content-between" data-hover-animate="fadeIn" data-hover-speed="400">
+                                <a href="#" class="btn btn-dark me-2"><i class="icon-shopping-cart"></i></a>
+                                <a href="include/ajax/shop-item.html" class="btn btn-dark" data-lightbox="ajax"><i class="icon-line-expand"></i></a>
+                            </div>
+                            <div class="bg-overlay-bg bg-transparent"></div>
+                        </div>
+                    </div>
+                    <div class="product-desc">
+                        <div class="product-title"><h3><a href="@item.ProductSeoName-@item.ProductVariantIndex">@item.Name</a></h3></div>
+                        @if (item.CampaignPrice != null)
+                        {
+                            <div class="product-price"><del>@item.Price</del> <ins>@item.DiscountedPrice</ins></div>
+                        }
+                        else
+                        {
+                            <div class="product-price"><ins>@item.Price</ins></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div><!-- #shop end -->
+
+<div class="sidebar col-lg-3">
+    <div class="sidebar-widgets-wrap">
+        <partial name="GetFiltersByCategoryId" model="@Model.Filters" />
+    </div>
+</div>

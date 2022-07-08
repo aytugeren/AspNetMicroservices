@@ -15,5 +15,7 @@
         IMongoCollection<Catalog> Catalogs { get; }
 
         IMongoCollection<ContentCatalog> ContentCatalogs { get; }
+
+        IMongoCollection<CatalogProductMapping> CatalogProductMappings { get; }
     }
 }

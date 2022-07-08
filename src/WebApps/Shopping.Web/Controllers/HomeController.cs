@@ -16,6 +16,7 @@ namespace Shopping.Web.Controllers
             _catalogService = catalogService;
         }
 
+        [Route("/")]
         public IActionResult Index()
         {
             return View();

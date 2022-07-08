@@ -68,20 +68,6 @@
         }
 
         /// <summary>
-        /// The GetProductyCategory
-        /// </summary>
-        /// <param name="category">The <see cref="string"/></param>
-        /// <returns>The <seealso cref="Task{ActionResult{T}}"/></returns>
-        [Route("[action]/{category}", Name = "GetProductByCategory")]
-        [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory(string category)
-        {
-            var product = await _repository.GetProductByCategory(category);
-            return Ok(product);
-        }
-
-        /// <summary>
         /// The CreateProduct
         /// </summary>
         /// <param name="product">The <see cref="Model"/></param>
@@ -145,6 +131,53 @@
 
             return Ok(contentCatalogs);
         }
+
+
+        /// <summary>
+        /// The GetCatalogAndProductsById
+        /// </summary>
+        /// <param name="catalogId">The <see cref="string"/></param>
+        /// <returns>The <seealso cref="Task{ActionResult{T}}"/></returns>
+        [Route("[action]/{catalogId}", Name = "GetCatalogAndProductsById")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<CatalogProductMapping>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<CatalogProductMapping>>> GetCatalogAndProductsById(string catalogId)
+        {
+            var catalogAndProducts = await _catalogRepository.GetCatalogProductMappings(catalogId);
+
+            return Ok(catalogAndProducts);
+        }
+
+        /// <summary>
+        /// The GetCatalogAndProductsById
+        /// </summary>
+        /// <param name="catalogId">The <see cref="string"/></param>
+        /// <returns>The <seealso cref="Task{ActionResult{T}}"/></returns>
+        [Route("[action]/{seoName}", Name = "GetCatalogBySeoName")]
+        [HttpGet]
+        [ProducesResponseType(typeof(Catalog), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Catalog>> GetCatalogBySeoName(string seoName)
+        {
+            var catalog = await _catalogRepository.GetCatalogBySeoName(seoName);
+
+            return Ok(catalog);
+        }
+
+        /// <summary>
+        /// The GetProductsByIds
+        /// </summary>
+        /// <param name="ids">The <see cref="List{T}"/></param>
+        /// <returns>The <seealso cref="Task{ActionResult{T}}"/></returns>
+        [Route("[action]", Name = "GetProductsByIds")]
+        [HttpPost]
+        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByIds(List<string> ids)
+        {
+            var products = await _catalogRepository.GetProductByIds(ids);
+            return Ok(products);
+        }
+
+
         #endregion
     }
 }

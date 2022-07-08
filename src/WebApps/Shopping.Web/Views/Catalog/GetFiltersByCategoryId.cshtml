@@ -1,0 +1,34 @@
+﻿@model Dictionary<string, List<string>>
+@{
+}
+<div class="widget widget_links clearfix">
+
+    <h4>Kategoriler</h4>
+    @if (Model.Any())
+    {
+            <ul>
+        @foreach (var filters in Model)
+        {
+            @if (filters.Key == "Header")
+            {
+                @foreach (var item in filters.Value)
+                {
+                    <li><a href="#">@item</a></li>
+                }
+            }
+            @if (filters.Key == "HeaderSub")
+            {
+                <ul>
+                    @foreach (var item in filters.Value)
+                    {
+                        <li><a href="#">@item</a></li>
+                    }
+                </ul>
+            }
+        }
+    </ul>
+    }
+
+</div>
+
+<div class="widget clearfix"> </div>

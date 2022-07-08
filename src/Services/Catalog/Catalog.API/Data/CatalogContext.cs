@@ -22,7 +22,8 @@
             Products = database.GetCollection<Product>(configuration.GetValue<string>("DatabaseSettings:CollectionName"));
             Catalogs = database.GetCollection<Catalog>(configuration.GetValue<string>("DatabaseSettings:CollectionNameCatalog"));
             ContentCatalogs = database.GetCollection<ContentCatalog>(configuration.GetValue<string>("DatabaseSettings:CollectionNameContentCatalog"));
-            CatalogContextSeed.SeedData(Products, Catalogs, ContentCatalogs);
+            CatalogProductMappings = database.GetCollection<CatalogProductMapping>(configuration.GetValue<string>("DatabaseSettings:CollectionNameCatalogProductMapping"));
+            CatalogContextSeed.SeedData(Products, Catalogs, ContentCatalogs, CatalogProductMappings);
         }
 
         /// <summary>
@@ -34,5 +35,6 @@
 
         public IMongoCollection<Catalog> Catalogs { get; }
 
+        public IMongoCollection<CatalogProductMapping> CatalogProductMappings { get; }
     }
 }

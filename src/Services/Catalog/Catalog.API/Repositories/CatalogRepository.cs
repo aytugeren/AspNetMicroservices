@@ -19,7 +19,7 @@ namespace Catalog.API.Repositories
             return catalogs;
         }
 
-        public async Task<IEnumerable<Entities.ContentCatalog>> GetContentCatalogByPlace(string placeEnum)
+        public async Task<IEnumerable<ContentCatalog>> GetContentCatalogByPlace(string placeEnum)
         {
             // Creating Filter 
             //Eq like operation = ElemMatch not it
@@ -28,10 +28,36 @@ namespace Catalog.API.Repositories
             return await _catalogContext.ContentCatalogs.Find(filter).ToListAsync();
         }
 
-        public async Task<IEnumerable<Entities.ContentCatalog>> GetContentCatalogs()
+        public async Task<IEnumerable<ContentCatalog>> GetContentCatalogs()
         {
             var contentCatalogs = await _catalogContext.ContentCatalogs.Find(prop => true).ToListAsync();
             return contentCatalogs;
+        }
+
+        public async Task<IEnumerable<CatalogProductMapping>> GetCatalogProductMappings(string catalogId)
+        {
+
+            FilterDefinition<Entities.CatalogProductMapping> filter = Builders<Entities.CatalogProductMapping>.Filter.Eq(p => p.CatalogId, catalogId);
+            return await _catalogContext.CatalogProductMappings.Find(filter).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Product>> GetProductByIds(List<string>? ids)
+        {
+            var productsByIds = await _catalogContext.Products.Find(x => ids.Contains(x.Id)).ToListAsync();
+            return productsByIds;
+        }
+
+        public async Task<Entities.Catalog> GetCatalogBySeoName(string? seoName)
+        {
+            var catalog = await _catalogContext.Catalogs.Find(x => x.CatalogSeoName.Contains(seoName)).FirstOrDefaultAsync();
+            if (catalog == null)
+            {
+                return new Entities.Catalog();
+            }
+            else
+            {
+                return catalog;
+            }
         }
     }
 }

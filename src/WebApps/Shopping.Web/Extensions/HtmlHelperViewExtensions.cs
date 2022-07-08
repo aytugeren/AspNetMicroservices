@@ -33,6 +33,7 @@ namespace Shopping.Web.Extensions
         private static async Task<IHtmlContent> RenderActionAsync(this IHtmlHelper helper, string action, string controller, string area, object parameters = null)
         {
             // fetching required services for invocation
+            
             var currentHttpContext = helper.ViewContext.HttpContext;
             var httpContextFactory = GetServiceOrFail<IHttpContextFactory>(currentHttpContext);
             var actionInvokerFactory = GetServiceOrFail<IActionInvokerFactory>(currentHttpContext);
