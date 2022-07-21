@@ -4,6 +4,6 @@
     {
         public IEnumerable<ProductModel> Products { get; set; }
 
-        public Dictionary<string, List<string>> Filters { get; set; }
+        public Dictionary<string, List<PlacedCatalogModel>> Filters { get; set; }
     }
 }

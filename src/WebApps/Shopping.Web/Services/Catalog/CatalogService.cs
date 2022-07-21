@@ -115,12 +115,13 @@ namespace Shopping.Web.Services.Catalog
             if (string.IsNullOrEmpty(catalogModel.CatalogParentIndex))
             {
                 List<PlacedCatalogModel> models = new List<PlacedCatalogModel>();
-
                 //// Eger kategori 1. Level ise bunun altinda bulunan kataloglar bulunuyor.
                 var subCatalogs = responseForCatalogs.Where(x => x.CatalogParentIndex == catalogModel.CatalogIndex).GroupBy(x => x.CatalogPlace).ToList();
+
                 //// Filtreler ekleniyor.
                 filters.Add("Header", new List<PlacedCatalogModel> { new PlacedCatalogModel() { CatalogName = catalogModel.CatalogName, CatalogSeoName = catalogModel.CatalogSeoName }  });
-                subCatalogs.ForEach(x => filters.Add(x.Key, new List<PlacedCatalogModel>()).ToList()));
+                var result = subCatalogs.ToList();
+                subCatalogs.ForEach(x => filters.Add(x.Key, x.ToList()));
             }
             else
             {
@@ -133,8 +134,8 @@ namespace Shopping.Web.Services.Catalog
                     var subCatalogsOfParentCatalog = responseForCatalogs.Where(x => x.CatalogIndex == parentCatalog.CatalogIndex).GroupBy(x => x.CatalogPlace).ToList();
 
                     //// Kategoriler ekleniyor.
-                    filters.Add("Header", new List<string> { catalogModel.CatalogName });
-                    subCatalogsOfParentCatalog.ForEach(x => filters.Add(x.Key, x.Select(y => y.CatalogName).ToList()));
+                    filters.Add("Header", new List<PlacedCatalogModel> { new PlacedCatalogModel() { CatalogName = catalogModel.CatalogName, CatalogSeoName = catalogModel.CatalogSeoName } });
+                    subCatalogsOfParentCatalog.ForEach(x => filters.Add(x.Key, x.ToList()));
                 }
             }
 

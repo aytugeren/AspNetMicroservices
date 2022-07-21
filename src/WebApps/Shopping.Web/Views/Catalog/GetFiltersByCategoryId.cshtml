@@ -1,4 +1,4 @@
-﻿@model Dictionary<string, List<string>>
+﻿@model Dictionary<string, List<PlacedCatalogModel>>
 @{
 }
 <div class="widget widget_links clearfix">
@@ -13,7 +13,7 @@
             {
                 @foreach (var item in filters.Value)
                 {
-                    <li><a href="#">@item</a></li>
+                    <li><a href="@item.CatalogSeoName">@item.CatalogName</a></li>
                 }
             }
             @if (filters.Key == "HeaderSub")
@@ -21,7 +21,7 @@
                 <ul>
                     @foreach (var item in filters.Value)
                     {
-                        <li><a href="#">@item</a></li>
+                        <li><a href="@item.CatalogSeoName">@item.CatalogName</a></li>
                     }
                 </ul>
             }
