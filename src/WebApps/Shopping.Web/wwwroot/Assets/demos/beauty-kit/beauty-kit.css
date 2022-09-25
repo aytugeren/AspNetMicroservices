@@ -3,7 +3,7 @@
 	Version: 1.0
 -----------------------------------------------------------------*/
 
-@import url("css/inter-font/inter.css");
+@import url("/Assets/css/inter-font/inter.css");
 
 :root {
 	--themecolor:  #222E2B;

@@ -1,10 +1,12 @@
-﻿using MediatR;
+﻿using System.Net;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Ordering.Application.Features.Orders.Commands.CheckoutOrder;
 using Ordering.Application.Features.Orders.Commands.DeleteOrder;
 using Ordering.Application.Features.Orders.Commands.UpdateOrder;
+using Ordering.Application.Features.Orders.Queries.GetAllOrders;
 using Ordering.Application.Features.Orders.Queries.GetOrdersList;
-using System.Net;
+using Ordering.Application.Features.Orders.Models;
 
 namespace Ordering.API.Controllers
 {
@@ -19,7 +21,7 @@ namespace Ordering.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{userName}", Name = "GetOrder")]
+        [HttpGet("{userName}", Name = "GetOrderByUserName")]
         [ProducesResponseType(typeof(IEnumerable<OrdersVm>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<OrdersVm>>> GetOrdersByUserName(string userName)
         {
@@ -56,6 +58,15 @@ namespace Ordering.API.Controllers
             var command = new DeleteOrderCommand() { Id = id };
             await _mediator.Send(command);
             return NoContent();
+        }
+
+        [HttpGet(Name = "GetAllOrders")]
+        [ProducesResponseType(typeof(IEnumerable<OrdersVm>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<OrdersVm>>> GetAllOrders()
+        {
+            var query = new GetAllOrdersQuery();
+            var orders = await _mediator.Send(query);
+            return Ok(orders);
         }
     }
 }

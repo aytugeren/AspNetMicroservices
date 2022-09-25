@@ -45,6 +45,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{CF8A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Web", "WebApps\Shopping.Web\Shopping.Web.csproj", "{72BF0395-C11A-4464-9677-43090E8A9CCE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Admin", "WebApps\Shopping.Admin\Shopping.Admin.csproj", "{3745AD4B-AC5E-4E21-B646-AA5AF3656319}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,10 @@ Global
 		{72BF0395-C11A-4464-9677-43090E8A9CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72BF0395-C11A-4464-9677-43090E8A9CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72BF0395-C11A-4464-9677-43090E8A9CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3745AD4B-AC5E-4E21-B646-AA5AF3656319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3745AD4B-AC5E-4E21-B646-AA5AF3656319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3745AD4B-AC5E-4E21-B646-AA5AF3656319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3745AD4B-AC5E-4E21-B646-AA5AF3656319}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,6 +130,7 @@ Global
 		{068AA2C3-ADDE-4A0E-B073-938FBE6998A1} = {6B5008C0-667C-4003-8C3A-1DF6745594F8}
 		{DE2C50FE-A4C4-4120-86A1-404D8052610E} = {6B5008C0-667C-4003-8C3A-1DF6745594F8}
 		{72BF0395-C11A-4464-9677-43090E8A9CCE} = {CF8A5D99-C905-4AEE-9DF1-7543877AC394}
+		{3745AD4B-AC5E-4E21-B646-AA5AF3656319} = {CF8A5D99-C905-4AEE-9DF1-7543877AC394}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {186A4112-4DC1-49A0-BFE3-C79169EFFD6B}

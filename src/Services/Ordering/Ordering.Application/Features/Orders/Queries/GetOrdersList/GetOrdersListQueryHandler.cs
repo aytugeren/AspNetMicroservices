@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using Ordering.Application.Contracts.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Ordering.Application.Features.Orders.Models;
+using Ordering.Domain.Entities;
 
 namespace Ordering.Application.Features.Orders.Queries.GetOrdersList
 {
@@ -22,7 +19,13 @@ namespace Ordering.Application.Features.Orders.Queries.GetOrdersList
 
         public async Task<List<OrdersVm>> Handle(GetOrdersListQuery request, CancellationToken cancellationToken)
         {
-            var orderList = await _orderRepository.GetOrdersByUserName(request.Username);
+            var orderList = default(IEnumerable<Order>);
+            if (request.Username == "All")
+            {
+                orderList = await _orderRepository.GetAllOrders();
+                return _mapper.Map<List<OrdersVm>>(orderList);
+            }
+            orderList = await _orderRepository.GetOrdersByUserName(request.Username);
             return _mapper.Map<List<OrdersVm>>(orderList);
         }
     }

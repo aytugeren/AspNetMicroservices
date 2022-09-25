@@ -14,7 +14,9 @@
             <div class="product col-md-4 col-sm-6 col-12">
                 <div class="grid-inner">
                     <div class="product-image">
-                        <a href="@item.ProductSeoName-@item.ProductVariantIndex"><img src="@StaticPaths.StaticPathOfImages@item.ProductImage" alt="Checked Short Dress"></a>
+                        <a href="/@item.ProductSeoName-@item.ProductVariantIndex">
+                            <img src="@StaticPaths.StaticPathOfImages@item.ProductImage" alt="Checked Short Dress">
+                        </a>
                         <div class="bg-overlay">
                             <div class="bg-overlay-content align-items-end justify-content-between" data-hover-animate="fadeIn" data-hover-speed="400">
                                 <a href="#" class="btn btn-dark me-2"><i class="icon-shopping-cart"></i></a>
@@ -24,7 +26,7 @@
                         </div>
                     </div>
                     <div class="product-desc">
-                        <div class="product-title"><h3><a href="@item.ProductSeoName-@item.ProductVariantIndex">@item.Name</a></h3></div>
+                        <div class="product-title"><h3><a href="Product/Index?url=@item.ProductSeoName-@item.ProductVariantIndex">@item.Name</a></h3></div>
                         @if (item.CampaignPrice != null)
                         {
                             <div class="product-price"><del>@item.Price</del> <ins>@item.DiscountedPrice</ins></div>
@@ -36,12 +38,12 @@
                     </div>
                 </div>
             </div>
+
         }
     </div>
-</div><!-- #shop end -->
 
-<div class="sidebar col-lg-3">
-    <div class="sidebar-widgets-wrap">
-        <partial name="GetFiltersByCategoryId" model="@Model.Filters" />
+    <div class="sidebar col-lg-3">
+        <div class="sidebar-widgets-wrap">
+            <partial name="GetFiltersByCategoryId" model="@Model.Filters" />
+        </div>
     </div>
-</div>

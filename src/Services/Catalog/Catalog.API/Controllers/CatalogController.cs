@@ -34,7 +34,7 @@
         }
 
         #region Public Methods
-
+        #region WebActions
         /// <summary>
         /// The GetProducts
         /// </summary>
@@ -176,8 +176,19 @@
             var products = await _catalogRepository.GetProductByIds(ids);
             return Ok(products);
         }
+        #endregion
+        #region AdminPanelActions
 
+        [Route("[action]", Name = "AdminGetContentCatalogs")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<ContentCatalog>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<ContentCatalog>>> AdminGetContentCatalog()
+        {
+            var contentCatalogs = await _catalogRepository.GetContentCatalogs();
+            return Ok(contentCatalogs);
+        }
 
+        #endregion
         #endregion
     }
 }

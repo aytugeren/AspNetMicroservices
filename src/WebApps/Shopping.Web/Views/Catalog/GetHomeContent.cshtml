@@ -1,27 +1,5 @@
 ﻿@using Shopping.Web.Extensions
-@model IEnumerable<ContentCatalogModel>
 
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-<section id="content">
-    <div class="content-wrap">
-        <div class="container clearfix">
-            <div class="row align-items-stretch gutter-20 min-vh-60">
-                <div class="col-md-12">
-                    <div class="row align-items-stretch gutter-20 h-100">
-                        @if (Model.Any())
-                        {
-                            @foreach (var item in Model)
-                            {
-                                <div class="@item.ButtonHtml">
-                                    <a href="@item.ButtonLink" class="grid-inner d-block h-100" style="background-image: url('@StaticPaths.StaticPathOfImages@item.ContentImage');"></a>
-                                </div>
-                            }
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!-- #content end -->

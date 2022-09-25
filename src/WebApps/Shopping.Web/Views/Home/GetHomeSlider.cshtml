@@ -1,4 +1,62 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Shopping.Web.Extensions
+@model IEnumerable<ContentCatalogModel>
+@{
+    bool dataLoop = true;
+
+    if (Model.Count() <= 1)
+    {
+        dataLoop = false;
+    }
+}
+
+<!-- Slider
+        ============================================= -->
+<section id="slider" class="slider-element swiper_wrapper min-vh-100" data-loop=@dataLoop.ToString() data-speed="1000" data-autoplay="5000">
+    <div class="slider-inner">
+        @if (Model != null)
+        {
+
+            <div class="swiper-container swiper-parent">
+                <div class="swiper-wrapper">
+                    @foreach (var item in Model)
+                    {
+                        <div class="swiper-slide dark">
+                            <div class="container">
+                                <div class="slider-caption">
+                                    <h2 data-animate="fadeInUp">@Html.Raw(item.ContentHtml)</h2>
+                                    <p class="mb-4" data-animate="fadeInUp" data-delay="100">@Html.Raw(item.ContentHtml2)</p>
+                                    <div>
+                                        <a href=@item.ButtonLink data-animate="fadeInUp" data-delay="200" class="button button-large button-white button-light">@Html.Raw(item.ButtonText)</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide-bg" style="background-image: url('@StaticPaths.StaticPathOfImages@item.ContentImage');"></div>
+                        </div>
+                    }
+                </div>
+                @if (Model.Count() > 1)
+                {
+                    <div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+                    <div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
+                }
+                <div class="slide-number"><div class="slide-number-current"></div><span>/</span><div class="slide-number-total"></div></div>
+            </div>
+
+
+            <div class="social-icons">
+                <a href="#" class="social-icon si-small si-borderless si-rounded si-facebook">
+                    <i class="icon-facebook text-white-50"></i>
+                    <i class="icon-facebook"></i>
+                </a>
+                <a href="#" class="social-icon si-small si-borderless si-rounded si-instagram">
+                    <i class="icon-instagram text-white-50"></i>
+                    <i class="icon-instagram"></i>
+                </a>
+                <a href="#" class="social-icon si-small si-borderless si-rounded si-youtube">
+                    <i class="icon-youtube text-white-50"></i>
+                    <i class="icon-youtube"></i>
+                </a>
+            </div>
+        }
+    </div>
+</section><!-- #Slider End -->

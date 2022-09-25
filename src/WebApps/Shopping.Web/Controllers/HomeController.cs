@@ -32,9 +32,10 @@ namespace Shopping.Web.Controllers
             return PartialView();
         }
 
-        public PartialViewResult GetHomeSlider()
+        public async Task<PartialViewResult> GetHomeSlider()
         {
-            return PartialView();
+            var sliderData = await _catalogService.GetContentCatalogsByPlaceEnum("Header");
+            return PartialView(sliderData);
         }
 
         public PartialViewResult GetHomeBar()

@@ -11,6 +11,85 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Assets\js\components\bs-datatable.js" />
+    <None Include="wwwroot\Assets\js\components\bs-filestyle.js" />
+    <None Include="wwwroot\Assets\js\components\bs-select.js" />
+    <None Include="wwwroot\Assets\js\components\bs-select.min.js" />
+    <None Include="wwwroot\Assets\js\components\bs-switches.js" />
+    <None Include="wwwroot\Assets\js\components\datepicker.js" />
+    <None Include="wwwroot\Assets\js\components\daterangepicker.js" />
+    <None Include="wwwroot\Assets\js\components\event.move.js" />
+    <None Include="wwwroot\Assets\js\components\image-changer.js" />
+    <None Include="wwwroot\Assets\js\components\moment.js" />
+    <None Include="wwwroot\Assets\js\components\rangeslider.min.js" />
+    <None Include="wwwroot\Assets\js\components\select-boxes.js" />
+    <None Include="wwwroot\Assets\js\components\selectsplitter.js" />
+    <None Include="wwwroot\Assets\js\components\star-rating.js" />
+    <None Include="wwwroot\Assets\js\components\timepicker.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\icons\default\icons.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\jquery.tinymce.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\langs\README.md" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\advlist\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\anchor\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\autolink\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\autoresize\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\autosave\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\bbcode\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\charmap\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\codesample\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\code\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\colorpicker\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\contextmenu\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\directionality\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\emoticons\js\emojiimages.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\emoticons\js\emojiimages.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\emoticons\js\emojis.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\emoticons\js\emojis.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\emoticons\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\fullpage\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\fullscreen\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\help\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\hr\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\imagetools\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\image\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\importcss\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\link\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\lists\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\media\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\noneditable\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\pagebreak\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\paste\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\preview\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\print\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\quickbars\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\save\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\searchreplace\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\spellchecker\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\tabfocus\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\table\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\template\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\textcolor\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\textpattern\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\toc\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\visualblocks\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\visualchars\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\plugins\wordcount\plugin.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\themes\mobile\theme.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\themes\silver\theme.min.js" />
+    <None Include="wwwroot\Assets\js\components\tinymce\tinymce.min.js" />
+    <None Include="wwwroot\Assets\js\components\typehead.js" />
+    <None Include="wwwroot\Assets\js\particles\particles-bubbles.js" />
+    <None Include="wwwroot\Assets\js\particles\particles-line.js" />
+    <None Include="wwwroot\Assets\js\particles\particles-nasa.js" />
+    <None Include="wwwroot\Assets\js\particles\particles-poly.js" />
+    <None Include="wwwroot\Assets\js\particles\particles-snow.js" />
+    <None Include="wwwroot\Assets\js\particles\particles.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.5" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.6" />
@@ -19,6 +98,10 @@
     <PackageReference Include="Polly.Extensions.Http" Version="3.0.0" />
     <PackageReference Include="Serilog" Version="2.11.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\Assets\js\components\tinymce\tinymce.d.ts" />
   </ItemGroup>
 
 </Project>
