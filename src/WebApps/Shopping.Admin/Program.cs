@@ -2,6 +2,7 @@ using Shopping.Admin.Services.OrderServiceFolder;
 using Polly;
 using Serilog;
 using Polly.Extensions.Http;
+using Shopping.Admin.Services.CatalogServiceFolder;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -9,6 +10,9 @@ ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddRazorPages();
 
 builder.Services.AddHttpClient<IOrderService, OrderService>(c =>
+    c.BaseAddress = new Uri(configuration.GetValue<string>("ApiSettings:GatewayAddress")));
+
+builder.Services.AddHttpClient<ICatalogService, CatalogService>(c =>
     c.BaseAddress = new Uri(configuration.GetValue<string>("ApiSettings:GatewayAddress")));
 
 var app = builder.Build();

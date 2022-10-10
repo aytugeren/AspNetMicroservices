@@ -188,6 +188,14 @@
             return Ok(contentCatalogs);
         }
 
+        [Route("[action]/{id}", Name = "AdminGetContentCatalogById")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<ContentCatalog>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<ContentCatalog>>> AdminGetContentCatalogById(string id)
+        {
+            var contentCatalogs = await _catalogRepository.AdminGetContentCatalogById(id);
+            return Ok(contentCatalogs);
+        }
         #endregion
         #endregion
     }

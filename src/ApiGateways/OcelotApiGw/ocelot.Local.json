@@ -87,6 +87,18 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
+      "DownstreamPathTemplate": "/api/v1/Catalog/AdminGetContentCatalogById/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalog.api",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/Catalog/AdminGetContentCatalogById/{id}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/v1/Catalog/GetCatalogAndProductsById/{catalogId}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

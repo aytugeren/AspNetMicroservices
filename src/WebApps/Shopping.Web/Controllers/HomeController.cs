@@ -34,7 +34,7 @@ namespace Shopping.Web.Controllers
 
         public async Task<PartialViewResult> GetHomeSlider()
         {
-            var sliderData = await _catalogService.GetContentCatalogsByPlaceEnum("Header");
+            var sliderData = await _catalogService.GetContentCatalogsByPlaceEnum("Slider");
             return PartialView(sliderData);
         }
 

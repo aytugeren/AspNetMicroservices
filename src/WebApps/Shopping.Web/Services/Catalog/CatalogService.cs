@@ -43,7 +43,7 @@ namespace Shopping.Web.Services.Catalog
             {
                 var response = await _httpClient.GetStringAsync("/Catalog/GetContentCatalogs/" + placeEnum);
                 var responseToModel = JsonConvert.DeserializeObject<List<ContentCatalogModel>>(response);
-                return responseToModel.OrderBy(x => x.DisplayOrder);
+                return responseToModel.Where(x => x.IsActive && !x.IsDeleted).OrderBy(x => x.DisplayOrder);
             }
             catch (Exception ex)
             {

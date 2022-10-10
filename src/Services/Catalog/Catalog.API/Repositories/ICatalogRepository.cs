@@ -15,5 +15,7 @@
         Task<IEnumerable<Product>> GetProductByIds(List<string>? ids);
 
         Task<Catalog> GetCatalogBySeoName(string seoName);
+
+        Task<ContentCatalog> AdminGetContentCatalogById(string id);
     }
 }

@@ -59,5 +59,18 @@ namespace Catalog.API.Repositories
                 return catalog;
             }
         }
+
+        public async Task<ContentCatalog> AdminGetContentCatalogById(string id)
+        {
+            var catalog = await _catalogContext.ContentCatalogs.Find(x => x.Id == id).FirstOrDefaultAsync();
+            if (catalog == null)
+            {
+                return new Entities.ContentCatalog();
+            }
+            else
+            {
+                return catalog;
+            }
+        }
     }
 }
